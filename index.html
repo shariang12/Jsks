@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shariang Desaint | Solusi Profesional Bisnis & Digital</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #f8f9fa;
+            --dark: #212529;
+        }
+        
+        /* Mobile-First Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        body {
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--dark);
+            background: #fff;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            padding: 0 15px;
+        }
+        
+        section {
+            padding: 50px 0;
+        }
+        
+        h1, h2, h3 {
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        
+        h1 { font-size: 28px; }
+        h2 { font-size: 24px; }
+        h3 { font-size: 20px; }
+        
+        p {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        
+        /* Mobile Header */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        .logo img {
+            height: 30px;
+            margin-right: 8px;
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--primary);
+            cursor: pointer;
+            display: block;
+        }
+        
+        nav {
+            position: fixed;
+            top: 70px;
+            right: -100%;
+            width: 80%;
+            height: calc(100vh - 70px);
+            background: white;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            transition: right 0.3s ease;
+            z-index: 999;
+        }
+        
+        nav.active {
+            right: 0;
+        }
+        
+        nav ul {
+            list-style: none;
+            padding: 20px;
+        }
+        
+        nav ul li {
+            margin-bottom: 20px;
+        }
+        
+        nav ul li a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        nav ul li a:hover {
+            background: rgba(52, 152, 219, 0.1);
+            color: var(--secondary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(44, 62, 80, 0.9), rgba(52, 152, 219, 0.8)), 
+                        url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            margin-top: 70px;
+            text-align: center;
+            padding: 40px 0;
+        }
+        
+        .hero h1 {
+            margin-bottom: 15px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        .hero p {
+            font-size: 16px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out;
+            padding: 0 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 15px;
+            margin: 5px;
+        }
+        
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background: #c0392b;
+            transform: translateY(-3px);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Stats */
+        .stats {
+            background: var(--primary);
+            color: white;
+            padding: 40px 0;
+        }
+        
+        .stats-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            text-align: center;
+        }
+        
+        .stat-item {
+            padding: 15px;
+        }
+        
+        .stat-number {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--secondary);
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        /* Services */
+        .services .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .services .section-title h2 {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .services .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            border-top: 4px solid var(--secondary);
+        }
+        
+        .service-icon {
+            font-size: 40px;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+        
+        .service-card h3 {
+            margin-bottom: 10px;
+        }
+        
+        .service-link {
+            color: var(--secondary);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            margin-top: 15px;
+        }
+        
+        .service-link i {
+            margin-left: 5px;
+            transition: all 0.3s;
+        }
+        
+        .service-link:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            background: #f9f9f9;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin: 15px;
+        }
+        
+        .testimonial-content {
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .testimonial-content::before {
+            content: '\201C';
+            position: absolute;
+            top: -15px;
+            left: -10px;
+            font-size: 60px;
+            color: rgba(52, 152, 219, 0.1);
+            font-family: serif;
+            line-height: 1;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+        
+        .author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Clients */
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            align-items: center;
+            justify-items: center;
+        }
+        
+        .client-logo {
+            max-width: 100%;
+            height: auto;
+            max-height: 60px;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s;
+            padding: 10px;
+        }
+        
+        /* CTA */
+        .cta {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+        
+        .cta h2 {
+            margin-bottom: 20px;
+        }
+        
+        /* Contact */
+        .contact-item {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(52, 152, 219, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--secondary);
+            flex-shrink: 0;
+        }
+        
+        .contact-form {
+            background: #f9f9f9;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        
+        .submit-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.3);
+            z-index: 100;
+            text-decoration: none;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 50px 0 20px;
+            text-align: center;
+        }
+        
+        .footer-logo {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 20px;
+        }
+        
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 14px;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Tablet Styles */
+        @media (min-width: 768px) {
+            .mobile-menu-btn {
+                display: none;
+            }
+            
+            nav {
+                position: static;
+                width: auto;
+                height: auto;
+                background: transparent;
+                box-shadow: none;
+            }
+            
+            nav ul {
+                display: flex;
+                padding: 0;
+            }
+            
+            nav ul li {
+                margin-bottom: 0;
+                margin-left: 20px;
+            }
+            
+            nav ul li a {
+                padding: 5px;
+                font-size: 16px;
+            }
+            
+            .stats-container {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .clients-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            h1 { font-size: 36px; }
+            h2 { font-size: 30px; }
+        }
+        
+        /* Desktop Styles */
+        @media (min-width: 992px) {
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .clients-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/6283852330333" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Mobile Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh08K9vY5sJYKHgcuSfv_7N6uSqnC2YAstuyVxxoahTLyJKCPm3wlGu4wEQGslBzaRkGXrJLTFe7-2hVdvWn7Rd7Cr9rlkDBbbrBF6XpFPPySYIA6Y4PFMhPb2mwMNcbvUtxQIIFG-df9GUpUoC6IhvMTZtSU-CbCSFGeAhilPdeXWAwJ7fsefq-OrOrQ/s2201/1000062039.png" alt="Logo">
+                SHARIANG<span>DESAINT</span>
+            </a>
+            <button class="mobile-menu-btn" id="menuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#services">Layanan</a></li>
+                    <li><a href="#testimonials">Testimoni</a></li>
+                    <li><a href="#clients">Klien</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Solusi Profesional untuk Bisnis Anda</h1>
+            <p>Dari pendirian perusahaan hingga pengembangan digital, kami membantu 150+ klien membangun bisnis yang sukses sejak 2018.</p>
+            <div>
+                <a href="#contact" class="btn btn-primary">Konsultasi Gratis</a>
+                <a href="#services" class="btn btn-secondary">Layanan Kami</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container stats-container">
+            <div class="stat-item">
+                <div class="stat-number">150+</div>
+                <div class="stat-label">Klien Puas</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">7+</div>
+                <div class="stat-label">Jenis Layanan</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">5+</div>
+                <div class="stat-label">Tahun Pengalaman</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">99%</div>
+                <div class="stat-label">Kepuasan Klien</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Layanan Kami</h2>
+                <p>Kami menyediakan solusi lengkap untuk kebutuhan bisnis dan digital Anda</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <h3>Pendirian Perijinan</h3>
+                    <p>PT (UMKM, Perseroan), CV, Yayasan, dan bentuk badan usaha lainnya.</p>
+                    <a href="#contact" class="service-link">Konsultasi <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-receipt"></i>
+                    </div>
+                    <h3>Pembuatan NPWP</h3>
+                    <p>NPWP Pribadi dan Badan Usaha dengan pelaporan pajak terintegrasi.</p>
+                    <a href="#contact" class="service-link">Konsultasi <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>Desain Grafis</h3>
+                    <p>Gambar dan video promosi profesional untuk branding bisnis Anda.</p>
+                    <a href="#contact" class="service-link">Konsultasi <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Pembuatan Aplikasi</h3>
+                    <p>Ojek Online, Toko Online, Desa Digital, dan sistem custom.</p>
+                    <a href="#contact" class="service-link">Konsultasi <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Pembuatan Logo</h3>
+                    <p>Logo usaha, pribadi, dan organisasi dengan konsep kreatif.</p>
+                    <a href="#contact" class="service-link">Konsultasi <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Pembuatan Website</h3>
+                    <p>Portal Berita, Company Profile, Landing Page, dan lainnya.</p>
+                    <a href="#contact" class="service-link">Konsultasi <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Apa Kata Klien Kami?</h2>
+                <p>Testimoni dari berbagai klien yang telah menggunakan layanan kami</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    "Shariang Desaint membantu perusahaan kami dalam pendirian PT dan pembuatan website. Prosesnya cepat dan hasilnya sangat profesional. Sangat direkomendasikan!"
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-img">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client">
+                    </div>
+                    <div>
+                        <h4>Budi Santoso</h4>
+                        <p>Direktur PT Salsabila Trans</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section class="clients" id="clients">
+        <div class="container">
+            <div class="section-title">
+                <h2>Klien Kami</h2>
+                <p>Beberapa perusahaan yang telah mempercayai layanan kami</p>
+            </div>
+            <div class="clients-grid">
+                <img src="https://via.placeholder.com/150x60?text=SALSABILA+TRANS" alt="PT Salsabila Trans" class="client-logo">
+                <img src="https://via.placeholder.com/150x60?text=SIJEK+MEDIA" alt="PT Sijek Media" class="client-logo">
+                <img src="https://via.placeholder.com/150x60?text=TIKET+ONLINE" alt="Tiket Online" class="client-logo">
+                <img src="https://via.placeholder.com/150x60?text=APLIKASI+SIJEK" alt="Aplikasi Sijek" class="client-logo">
+                <img src="https://via.placeholder.com/150x60?text=APLIKASI+Zbond" alt="Aplikasi Zbond" class="client-logo">
+                <img src="https://via.placeholder.com/150x60?text=LAINNYA" alt="Dan Lainnya" class="client-logo">
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Siap Mengembangkan Bisnis Anda?</h2>
+            <p>Konsultasikan kebutuhan bisnis Anda dengan tim profesional kami sekarang juga</p>
+            <a href="https://wa.me/6283852330333" class="btn btn-primary">Hubungi via WhatsApp</a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Hubungi Kami</h2>
+                <p>Silakan isi form berikut atau hubungi langsung melalui kontak yang tersedia</p>
+            </div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div>
+                        <h4>Alamat</h4>
+                        <p>Perum Taman Permata Indah Blok C5, Panarukan, Situbondo 68351</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div>
+                        <h4>Telepon/WhatsApp</h4>
+                        <a href="tel:+6283852330333">0838-5233-0333</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div>
+                        <h4>Email</h4>
+                        <a href="mailto:businessshariang@gmail.com">businessshariang@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form">
+                <form>
+                    <input type="text" class="form-control" placeholder="Nama Anda" required>
+                    <input type="email" class="form-control" placeholder="Email Anda" required>
+                    <input type="tel" class="form-control" placeholder="Nomor WhatsApp" required>
+                    <select class="form-control" required>
+                        <option value="">Pilih Layanan</option>
+                        <option>Pendirian Perijinan</option>
+                        <option>Pembuatan NPWP</option>
+                        <option>Desain Grafis</option>
+                        <option>Pembuatan Aplikasi</option>
+                        <option>Pembuatan Logo</option>
+                        <option>Pembuatan Website</option>
+                        <option>Lainnya</option>
+                    </select>
+                    <textarea class="form-control" placeholder="Pesan Anda" rows="4" required></textarea>
+                    <button type="submit" class="submit-btn">Kirim Pesan</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+            <div class="copyright">
+                <p>&copy; 2023 <strong>Shariang Desaint</strong>. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        menuBtn.addEventListener('click', function() {
+            mainNav.classList.toggle('active');
+            this.innerHTML = mainNav.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('active');
+                menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Form submission
+        const contactForm = document.querySelector('.contact-form form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form data
+                const formData = new FormData(this);
+                const service = formData.get('service') || 'Layanan';
+                
+                // Create WhatsApp message
+                const message = `Halo Shariang Desaint,%0A%0ASaya ${formData.get('name')} ingin konsultasi tentang ${service}.%0A%0ADetail:%0AEmail: ${formData.get('email')}%0ANomor HP: ${formData.get('tel')}%0APesan: ${formData.get('message')}`;
+                
+                // Open WhatsApp
+                window.open(`https://wa.me/6283852330333?text=${message}`, '_blank');
+                
+                // Reset form
+                this.reset();
+            });
+        }
+    </script>
+</body>
+                                           </html>
